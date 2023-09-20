@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/><title>第2回：▼ 複数のグラフを描く · memoProgClass2023w.jl</title><meta name="title" content="第2回：▼ 複数のグラフを描く · memoProgClass2023w.jl"/><meta property="og:title" content="第2回：▼ 複数のグラフを描く · memoProgClass2023w.jl"/><meta property="twitter:title" content="第2回：▼ 複数のグラフを描く · memoProgClass2023w.jl"/><meta name="description" content="Documentation for memoProgClass2023w.jl."/><meta property="og:description" content="Documentation for memoProgClass2023w.jl."/><meta property="twitter:description" content="Documentation for memoProgClass2023w.jl."/><meta property="og:url" content="https://hsugawa8651.github.io/memoProgClass2023w.jl/ch02/"/><meta property="twitter:url" content="https://hsugawa8651.github.io/memoProgClass2023w.jl/ch02/"/><link rel="canonical" href="https://hsugawa8651.github.io/memoProgClass2023w.jl/ch02/"/><script data-outdated-warner src="../assets/warner.js"></script><link href="https://cdnjs.cloudflare.com/ajax/libs/lato-font/3.0.0/css/lato-font.min.css" rel="stylesheet" type="text/css"/><link href="https://cdnjs.cloudflare.com/ajax/libs/juliamono/0.050/juliamono.min.css" rel="stylesheet" type="text/css"/><link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/fontawesome.min.css" rel="stylesheet" type="text/css"/><link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/solid.min.css" rel="stylesheet" type="text/css"/><link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/brands.min.css" rel="stylesheet" type="text/css"/><link href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.8/katex.min.css" rel="stylesheet" type="text/css"/><script>documenterBaseURL=".."</script><script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js" data-main="../assets/documenter.js"></script><script src="../search_index.js"></script><script src="../siteinfo.js"></script><script src="../../versions.js"></script><link class="docs-theme-link" rel="stylesheet" type="text/css" href="../assets/themes/documenter-dark.css" data-theme-name="documenter-dark" data-theme-primary-dark/><link class="docs-theme-link" rel="stylesheet" type="text/css" href="../assets/themes/documenter-light.css" data-theme-name="documenter-light" data-theme-primary/><script src="../assets/themeswap.js"></script></head><body><div id="documenter"><nav class="docs-sidebar"><div class="docs-package-name"><span class="docs-autofit"><a href="../">memoProgClass2023w.jl</a></span></div><button class="docs-search-query input is-rounded is-small is-clickable my-2 mx-auto py-1 px-2" id="documenter-search-query">Search docs (Ctrl + /)</button><ul class="docs-menu"><li><a class="tocitem" href="../">Home</a></li></ul><div class="docs-version-selector field has-addons"><div class="control"><span class="docs-label button is-static is-size-7">Version</span></div><div class="docs-selector control is-expanded"><div class="select is-fullwidth is-size-7"><select id="documenter-version-selector"></select></div></div></div></nav><div class="docs-main"><header class="docs-navbar"><a class="docs-sidebar-button docs-navbar-link fa-solid fa-bars is-hidden-desktop" id="documenter-sidebar-button" href="#"></a><nav class="breadcrumb"><ul class="is-hidden-mobile"><li class="is-active"><a href>第2回：▼ 複数のグラフを描く</a></li></ul><ul class="is-hidden-tablet"><li class="is-active"><a href>第2回：▼ 複数のグラフを描く</a></li></ul></nav><div class="docs-right"><a class="docs-navbar-link" href="https://github.com/hsugawa8651/memoProgClass2023w.jl/blob/main/docs/src/ch02.md#" title="Edit source on GitHub"><span class="docs-icon fa-solid"></span></a><a class="docs-settings-button docs-navbar-link fa-solid fa-gear" id="documenter-settings-button" href="#" title="Settings"></a><a class="docs-article-toggle-button fa-solid fa-chevron-up" id="documenter-article-toggle-button" href="javascript:;" title="Collapse all docstrings"></a></div></header><article class="content" id="documenter-page"><h1 id="ch02"><a class="docs-heading-anchor" href="#ch02">第2回：▼ 複数のグラフを描く</a><a id="ch02-1"></a><a class="docs-heading-anchor-permalink" href="#ch02" title="Permalink"></a></h1><h2 id="リテラル"><a class="docs-heading-anchor" href="#リテラル">■ リテラル</a><a id="リテラル-1"></a><a class="docs-heading-anchor-permalink" href="#リテラル" title="Permalink"></a></h2><p>リテラル（literal）とは， 「文字の並び」の通りに解釈される量をいう．</p><p><code>1</code> や <code>1.1</code> はリテラルである． それぞれ，整数 <code>1</code> ，小数 <code>1.1</code> という値として評価される．</p><div class="admonition is-info"><header class="admonition-header">Note</header><div class="admonition-body"><p>計算機の中の小数は<a href="../ch07/#浮動小数点数">■ 浮動小数点数</a>と呼ばれ，筆算の小数とは異なる．</p></div></div><h2 id="文字列"><a class="docs-heading-anchor" href="#文字列">■ 文字列</a><a id="文字列-1"></a><a class="docs-heading-anchor-permalink" href="#文字列" title="Permalink"></a></h2><p>文字列とは，「文字の並び」として表される量である． 文字列のリテラルは，「二重引用符（double quotation mark） <code>&quot;</code> で囲まれた文字の並び」である．</p><pre><code class="language-julia-repl hljs" style="display:block;">julia&gt; &quot;Hello world&quot;</code><code class="nohighlight hljs ansi" style="display:block;">&quot;Hello world&quot;</code></pre><p>文字列を連結するには，演算子 <code>*</code> を用いる．</p><pre><code class="language-julia-repl hljs" style="display:block;">julia&gt; h = &quot;Hello&quot;</code><code class="nohighlight hljs ansi" style="display:block;">&quot;Hello&quot;</code><br/><code class="language-julia-repl hljs" style="display:block;">julia&gt; w = &quot;world&quot;</code><code class="nohighlight hljs ansi" style="display:block;">&quot;world&quot;</code><br/><code class="language-julia-repl hljs" style="display:block;">julia&gt; h * w</code><code class="nohighlight hljs ansi" style="display:block;">&quot;Helloworld&quot;</code><br/><code class="language-julia-repl hljs" style="display:block;">julia&gt; h * &quot; &quot; * w</code><code class="nohighlight hljs ansi" style="display:block;">&quot;Hello world&quot;</code></pre><div class="admonition is-info"><header class="admonition-header">Note</header><div class="admonition-body"><p>演算子 <code>*</code> は，数同士に対して用いると乗算の意味になる．文字列同士に用いると文字列の連結の意味になる．このように，同じ演算子 <code>*</code> に対して，複数の意味があり，適用する値の型（の組合せ）に応じて，適切な意味が選ばれて，計算される．</p></div></div><p>数字を表す文字列を作るには，<code>string</code> 関数を用いる．</p><pre><code class="language-julia-repl hljs" style="display:block;">julia&gt; string(0)</code><code class="nohighlight hljs ansi" style="display:block;">&quot;0&quot;</code><br/><code class="language-julia-repl hljs" style="display:block;">julia&gt; string(1)</code><code class="nohighlight hljs ansi" style="display:block;">&quot;1&quot;</code><br/><code class="language-julia-repl hljs" style="display:block;">julia&gt; string(1.1)</code><code class="nohighlight hljs ansi" style="display:block;">&quot;1.1&quot;</code></pre><h2 id="グラフに凡例を加える"><a class="docs-heading-anchor" href="#グラフに凡例を加える">▼ グラフに凡例を加える</a><a id="グラフに凡例を加える-1"></a><a class="docs-heading-anchor-permalink" href="#グラフに凡例を加える" title="Permalink"></a></h2><p>前回 <a href="../ch01/#式のグラフを描く">▼ 式のグラフを描く</a>では，2つの直線を同じ座標上に描いた．</p><pre><code class="language-julia hljs">using PyPlot
+
+xs = -1:0.1:1
+ys1=-1 * xs
+ys2=2 * xs .- 1
+plt.plot(xs, ys1)
+plt.plot(xs, ys2)</code></pre><p><img src="../ch02-leg0-plot.svg" alt/></p><p>グラフの凡例（はんれい，legend）は，グラフに描かれた曲線を区別するための説明である． PyPlotパッケージで書かれたグラフに凡例を追加するには，以下のようにする．</p><p>まず，<code>plot</code> 関数に <code>label=文字列</code> の形式で， その曲線に付与する文字列を指定する． すべての曲線を描いた後に，<code>legend</code> 関数を実行すると，グラフに凡例が追加される．</p><pre><code class="language-julia hljs">using PyPlot
+
+xs = -1:0.1:1
+ys1=-1 * xs
+ys2=2 * xs .- 1
+plt.plot(xs, ys1, label = &quot;y=-x&quot;)
+plt.plot(xs, ys2, label = &quot;y=2x-1&quot;)
+plt.legend()</code></pre><p><img src="../ch02-leg1-plot.svg" alt/></p><p>比例関係 <span>$y = ax$</span>（ただし <span>$a = 1, 2, 3, 4, 5$</span> ）のグラフを描こう．</p><pre><code class="language-julia hljs">xs = -1:0.1:1
+plt.plot(xs, xs, label = &quot;y= x&quot;)
+plt.plot(xs, 2 * xs, label = &quot;y=2x&quot;)
+plt.plot(xs, 3 * xs, label = &quot;y=3x&quot;)
+plt.plot(xs, 4 * xs, label = &quot;y=4x&quot;)
+plt.plot(xs, 5 * xs, label = &quot;y=5x&quot;)
+plt.legend()</code></pre><p><img src="../ch02-leg2a-plot.svg" alt/></p><div class="admonition is-info"><header class="admonition-header">Note</header><div class="admonition-body"><p>関数を呼び出すときに渡す値を，引数（ひきすう）または実引数（じつひきすう，argument）という．<code>label=文字列</code> のように名前付きで渡す引数を，キーワード引数（keyword argument）という．</p></div></div><h2 id="グラフに，水平線・垂直線を加える"><a class="docs-heading-anchor" href="#グラフに，水平線・垂直線を加える">▼ グラフに，水平線・垂直線を加える</a><a id="グラフに，水平線・垂直線を加える-1"></a><a class="docs-heading-anchor-permalink" href="#グラフに，水平線・垂直線を加える" title="Permalink"></a></h2><p>式 <span>$y=ax$</span> は，すべて原点 <span>$(0,0)$</span> を通る． 水平線や垂直線の補助線を引いて，これを見やすくしよう．</p><p>PyPlotパッケージに用意された関数 <code>axhline(y)</code> は， 縦座標 <span>$y$</span> で水平線（horizontal line）を描く． 最初の引数には，水平線を引く <span>$y$</span> 座標を指定する． キーワード引数 <code>color=&quot;k&quot;</code> は，黒色（black）で描くことを指定し，<code>lw=0.5</code> は線幅（linewidth）を指定する．</p><p>また，関数 <code>axvline(x)</code> は，横座標 <span>$x$</span> で垂直線（vertical line）を描く． 最初の引数には，垂直線を引く <span>$x$</span> 座標を指定する．</p><p>上のプログラムに続けて</p><pre><code class="language-julia hljs"># 水平線 y=0
+plt.axhline(0, color = &quot;k&quot;, lw = 0.5)
+# 垂直線 x=0
+plt.axvline(0, color = &quot;k&quot;, lw = 0.5)</code></pre><p><img src="../ch02-leg2c-plot.svg" alt/></p><h2 id="グラフの描画範囲を指定する"><a class="docs-heading-anchor" href="#グラフの描画範囲を指定する">▼ グラフの描画範囲を指定する</a><a id="グラフの描画範囲を指定する-1"></a><a class="docs-heading-anchor-permalink" href="#グラフの描画範囲を指定する" title="Permalink"></a></h2><p><code>plot</code> 命令は，すべての点を表示するように，描画範囲を拡大する．</p><p>グラフの描画範囲を調整するには，関数 <code>xlim</code> と <code>ylim</code> を用いる．</p><ul><li>関数 <code>xlim(a,b)</code> は，x軸の描画を <code>a</code> から <code>b</code> の範囲に限定する．</li><li>関数 <code>ylim(a,b)</code> は，y軸の描画を <code>a</code> から <code>b</code> の範囲に限定する．</li></ul><p>上のプログラムに続けて</p><pre><code class="language-julia hljs"># 描画範囲
+plt.xlim(-3, 3) # &lt;=
+plt.ylim(-3, 3) # &lt;=</code></pre><p><img src="../ch02-leg2-e1-plot.svg" alt/></p><p>別の描画範囲を指定してみる． 上のプログラムに続けて</p><pre><code class="language-julia hljs"># 描画範囲
+plt.xlim(-0.5, 0.5) # &lt;=
+plt.ylim(-0.5, 0.5) # &lt;=</code></pre><p><img src="../ch02-leg2-e2-plot.svg" alt/></p><h2 id="グラフのアスペクト比を等しくする"><a class="docs-heading-anchor" href="#グラフのアスペクト比を等しくする">▼ グラフのアスペクト比を等しくする</a><a id="グラフのアスペクト比を等しくする-1"></a><a class="docs-heading-anchor-permalink" href="#グラフのアスペクト比を等しくする" title="Permalink"></a></h2><p>「グラフの縦横の長さの比」をアスペクト比（aspect ratio）という．</p><p>関数 <code>plt.axes().set_aspect()</code> は，アスペクト比を指定する命令である．</p><p>何も指定しない場合は，<code>plt.axes().set_aspect(&quot;auto&quot;)</code> であり， アスペクト比は適当に調整される （既定値 6.4:4.8 を元に調整される）．</p><p>関数 <code>plt.axes().set_aspect(&quot;equal&quot;)</code> は，アスペクト比を等しくする命令である． 通常は，前項の描画範囲の指定と同時に用いる．</p><p>アスペクト <code>auto</code> の場合</p><pre><code class="language-julia hljs">using PyPlot
+# plt.axes().set_aspect(&quot;auto&quot;)  # PyPlot起動時は指定しなくてもよい
+
+xs = -1:0.2:1
+plt.plot(xs, xs)
+plt.xlim(-1, 1)
+plt.ylim(-1, 1)
+plt.axhline(0, color = &quot;k&quot;, lw = 0.5)
+plt.axvline(0, color = &quot;k&quot;, lw = 0.5)</code></pre><p><img src="../ch02-leg2-e3-plot.svg" alt/></p><p>アスペクト <code>equal</code> を指定する．</p><pre><code class="language-julia hljs">plt.figure()
+plt.axes().set_aspect(&quot;equal&quot;)  # &lt;==
+xs = -1:0.2:1
+plt.plot(xs, xs)
+plt.xlim(-1, 1)
+plt.ylim(-1, 1)
+plt.axhline(0, color = &quot;k&quot;, lw = 0.5)
+plt.axvline(0, color = &quot;k&quot;, lw = 0.5)</code></pre><p><img src="../ch02-leg2-e3a-plot.svg" alt/></p><div class="admonition is-info"><header class="admonition-header">Note</header><div class="admonition-body"><p>アスペクト比の変更は，何かを描く前に実行するのが望ましい．何かを描いてから。<code>set_aspect</code> 命令を実行すると警告される場合がある．</p></div></div><h2 id="練習：三角形の拡大縮小・平行移動を描画する"><a class="docs-heading-anchor" href="#練習：三角形の拡大縮小・平行移動を描画する">▲ 練習：三角形の拡大縮小・平行移動を描画する</a><a id="練習：三角形の拡大縮小・平行移動を描画する-1"></a><a class="docs-heading-anchor-permalink" href="#練習：三角形の拡大縮小・平行移動を描画する" title="Permalink"></a></h2><p>第1回の<a href="../ch01/#ベクトルの各要素をスカラーで乗除する">■ ベクトルの各要素をスカラーで乗除する</a>と<a href="../ch01/#ベクトルの各要素をスカラーで加減する">■ ベクトルの各要素をスカラーで加減する</a> では， 三角形を拡大縮小したり，平行移動したりした．それぞれの操作を行った三角形を同じ描画範囲で描け． 確かに拡大縮小または平行移動となっていることを観察せよ． 解答例 → <a href="#ベクトルに対する更新演算：乗除">■ ベクトルに対する更新演算：乗除</a>，<a href="#ベクトルに対する更新演算：加減">■ ベクトルに対する更新演算：加減</a></p><h2 id="for-文"><a class="docs-heading-anchor" href="#for-文">■ <code>for</code> 文</a><a id="for-文-1"></a><a class="docs-heading-anchor-permalink" href="#for-文" title="Permalink"></a></h2><p><a href="https://docs.julialang.org/en/v1.8/manual/control-flow/#man-loops">Repeated Evaluation: Loops (section)</a></p><p>一つずつ要素を取り出すことができる量をコレクション（collection）という． ベクトルや範囲は，コレクションである．</p><p><code>for</code> 文を用いると，コレクションから要素を一つづつ取り出して， <code>end</code> 文が出現するまでの文を繰り返して，計算を行うことができる． この繰り返される部分をブロック（block）という． ブロックは，字下げ（indent）で表記される． が，字下げは見やすさのためだけである．</p><p>繰り返しをループ（loop）ともいう．</p><div class="admonition is-info"><header class="admonition-header">Note</header><div class="admonition-body"><p>ブロックは，<code>for</code> 文以外にも出現する（たとえば，<a href="../ch05/#if文">■ if文</a>）． 区別する場合は <code>for</code> ブロックとも称する．</p></div></div><p>次の例では，変数 <code>i</code> にベクトルの各要素を入れて，<code>end</code> 文までの計算を繰り返す． コレクションの各要素が入る変数をループ変数（loop variable）という．</p><pre><code class="language-julia-repl hljs" style="display:block;">julia&gt; for i in [1, 3, 2]
+          @show i   # 式 i の値を表示する
+       end</code><code class="nohighlight hljs ansi" style="display:block;">i = 1
+i = 3
+i = 2</code></pre><p><code>@show i</code> は，式 <code>i</code> の値を表示するマクロである．</p><p>範囲を用いた <code>for</code> 文の例を示す．</p><p><code>println(x)</code> 関数は，<code>x</code> を印字してから，改行する命令である．</p><pre><code class="language-julia-repl hljs" style="display:block;">julia&gt; for i = 1:5
+          println(string(i))
+       end</code><code class="nohighlight hljs ansi" style="display:block;">1
+2
+3
+4
+5</code></pre><h2 id="for-文でパラメータを変えて，複数のグラフを描く"><a class="docs-heading-anchor" href="#for-文でパラメータを変えて，複数のグラフを描く">▼ for 文でパラメータを変えて，複数のグラフを描く</a><a id="for-文でパラメータを変えて，複数のグラフを描く-1"></a><a class="docs-heading-anchor-permalink" href="#for-文でパラメータを変えて，複数のグラフを描く" title="Permalink"></a></h2><p><a href="#グラフに凡例を加える">▼ グラフに凡例を加える</a> の後半のプログラムを再掲する．</p><pre><code class="language-julia hljs">using PyPlot
+
+xs = -1:0.1:1
+plt.plot(xs, xs, label = &quot;y= x&quot;)
+plt.plot(xs, 2 * xs, label = &quot;y=2x&quot;)
+plt.plot(xs, 3 * xs, label = &quot;y=3x&quot;)
+plt.plot(xs, 4 * xs, label = &quot;y=4x&quot;)
+plt.plot(xs, 5 * xs, label = &quot;y=5x&quot;)
+plt.legend()</code></pre><p>上のプログラムを，<code>for</code> 文を用いた繰り返しを用いて書き直してみよう．</p><p>次の例の <code>for</code> 文では， ループ変数 <code>a</code> に，1, 2, 3, 4, 5 の値を順番に入れて，<code>end</code> までの文を実行する．</p><p>繰り返しの中で <code>xs</code> は書き換えられないから，<code>xs</code> への代入は繰り返しの前に一度だけ行えばよい．</p><pre><code class="language-julia hljs">using PyPlot
+
+xs = -1:0.1:1
+for a = 1:5
+   plt.plot(xs, a * xs)
+end</code></pre><p><img src="../ch02-leg2b1-plot.svg" alt/></p><p>上のプログラムに凡例を加える前に，<code>for</code>文を使って，<code>label=文字列</code> に与える文字列を作ってみよう．</p><pre><code class="language-julia hljs">for a = 1:5
+   label1 = &quot;y=&quot; * string(a) * &quot;x&quot;
+   println(label1)
+end</code></pre><pre class="documenter-example-output"><code class="nohighlight hljs ansi">y=1x
+y=2x
+y=3x
+y=4x
+y=5x</code></pre><p>では凡例を加えよう．<code>plt.legend()</code> は，繰り返しを抜けてから，一度だけ呼び出す．</p><pre><code class="language-julia hljs">using PyPlot
+
+xs = -1:0.1:1
+for a = 1:5
+   label1 = &quot;y=&quot; * string(a) * &quot;x&quot;
+   plt.plot(xs, a * xs, label=label1)
+end
+plt.legend()</code></pre><p><img src="../ch02-leg2b2-plot.svg" alt/></p><h2 id="練習"><a class="docs-heading-anchor" href="#練習">▲ 練習</a><a id="練習-1"></a><a class="docs-heading-anchor-permalink" href="#練習" title="Permalink"></a></h2><p>上のプログラムで，グラフのアスペクト比を等しくし，さらに補助線 <span>$x = 0$</span> と <span>$y = 0$</span> を追加せよ．</p><h2 id="冪乗関数を描く"><a class="docs-heading-anchor" href="#冪乗関数を描く">▼ 冪乗関数を描く</a><a id="冪乗関数を描く-1"></a><a class="docs-heading-anchor-permalink" href="#冪乗関数を描く" title="Permalink"></a></h2><p><a href="https://docs.julialang.org/en/v1.8/base/math/#Base.:^-Tuple{Number,%20Number}"><code>Base.:^</code> - Method</a></p><p><code>x^y</code> は，冪（べき，power）ないし冪乗（べきじょう）<span>$x^{y}$</span> を表す． <span>$x$</span> を底（base），<span>$y$</span> を冪指数（exponent）という．</p><pre><code class="language-julia-repl hljs" style="display:block;">julia&gt; 2^2</code><code class="nohighlight hljs ansi" style="display:block;">4</code><br/><code class="language-julia-repl hljs" style="display:block;">julia&gt; 2^3</code><code class="nohighlight hljs ansi" style="display:block;">8</code><br/><code class="language-julia-repl hljs" style="display:block;">julia&gt; 2^4</code><code class="nohighlight hljs ansi" style="display:block;">16</code></pre><p>スカラー <code>c</code> とベクトル <code>v</code> に演算子 <code>.^</code> を適用した式 <code>c .^ v</code> は， 各々の冪指数に対して冪乗した値を要素とするベクトルを与える．</p><p>底が整数の場合は <code>.^</code> の前に空白を入れる．</p><pre><code class="language-julia-repl hljs" style="display:block;">julia&gt; 2 .^[2,3,4]</code><code class="nohighlight hljs ansi" style="display:block;">3-element Vector{Int64}:
+  4
+  8
+ 16</code></pre><div class="admonition is-info"><header class="admonition-header">Note</header><div class="admonition-body"><p>整数（底）の直後に <code>.^</code> と書くと例外が出るので注意しよう．</p><pre><code class="language- hljs">julia&gt; 2.^[2,3,4]
+ERROR: syntax: invalid syntax &quot;2.^&quot;; add space(s) to clarify</code></pre></div></div><p>底が小数の場合は，その直後に <code>.^</code> と書いてよい．</p><pre><code class="language-julia-repl hljs" style="display:block;">julia&gt; 2.0.^[2, 3, 4]</code><code class="nohighlight hljs ansi" style="display:block;">3-element Vector{Float64}:
+  4.0
+  8.0
+ 16.0</code></pre><p>ベクトルとスカラーに演算子 <code>.^</code> を適用した式 <code>v .^ c</code> は， 各々の底に対して冪乗した値を要素とするベクトルを与える．</p><pre><code class="language-julia-repl hljs" style="display:block;">julia&gt; [2, 3, 4] .^ 2</code><code class="nohighlight hljs ansi" style="display:block;">3-element Vector{Int64}:
+  4
+  9
+ 16</code><br/><code class="language-julia-repl hljs" style="display:block;">julia&gt; [2, 3, 4] .^ 2</code><code class="nohighlight hljs ansi" style="display:block;">3-element Vector{Int64}:
+  4
+  9
+ 16</code></pre><p>範囲 <code>v</code> とスカラー <code>c</code> に演算子 <code>.^</code> を適用した式 <code>v .^ c</code> は， 各々の底に対して冪乗した値を要素とするベクトルを与える．</p><pre><code class="language-julia-repl hljs" style="display:block;">julia&gt; (2:4) .^ 2</code><code class="nohighlight hljs ansi" style="display:block;">3-element Vector{Int64}:
+  4
+  9
+ 16</code><br/><code class="language-julia-repl hljs" style="display:block;">julia&gt; 2:4 .^ 2    # `^`は `:` よりも優先度が高い</code><code class="nohighlight hljs ansi" style="display:block;">2:16</code></pre><p>区間 <span>$x= [0,1]$</span> で，冪乗 <span>$y=x^a$</span>（ただし <span>$a = 2,3,4,5$</span> ）のグラフを描こう．</p><p><code>plt.axes().set_aspect(&quot;equal&quot;)</code> は， グラフの縦横比（アスペクト比 aspect ratio）を等しくする命令である．</p><pre><code class="language-julia hljs">using PyPlot
+plt.axes().set_aspect(&quot;equal&quot;)
+
+xs = 0:0.1:1
+plt.plot(xs, xs .^ 2)
+plt.plot(xs, xs .^ 3)
+plt.plot(xs, xs .^ 4)
+plt.plot(xs, xs .^ 5)</code></pre><p><img src="../ch02-po1-plot.svg" alt/></p><p><code>for</code> 文を使って，繰り返しの処理をまとめる．</p><p><code>plt.axes().set_aspect(&quot;equal&quot;)</code> は，グラフを書く前に一度だけ実行する．</p><p>区間を <span>$x= [0,2]$</span> に拡大して，凡例を追加しよう．</p><pre><code class="language-julia hljs">using PyPlot
+plt.axes().set_aspect(&quot;equal&quot;)
+xs = 0:0.05:2
+for a = 2:5
+   plt.plot(xs, xs .^ a, label = &quot;y=x^&quot; * string(a))
+end
+plt.legend()
+# 描画範囲を設定
+plt.xlim(-0.05, 2)
+plt.ylim(-0.05, 2)</code></pre><p><img src="../ch02-po2-plot.svg" alt/></p><p>冪乗 <span>$y=x^a$</span> （ただし <span>$a = 2, 3, 4, 5 $）は，すべて点 $(1,1)$</span> を通る． 直線 <span>$x = 1$</span> と <span>$y = 1$</span> を付与して，これを見やすくしよう．</p><pre><code class="language-julia hljs">using PyPlot
+plt.axes().set_aspect(&quot;equal&quot;)
+
+# 間隔を狭めた
+xs = 0:0.05:2
+for a = 2:5
+   plt.plot(xs, xs .^ a, label = &quot;y=x^&quot; * string(a))
+end
+plt.legend()
+# 描画範囲を設定
+plt.xlim(-0.05, 2)
+plt.ylim(-0.05, 2)
+# 水平線 y=1
+plt.axhline(1, color = &quot;k&quot;, lw = 0.5)
+# 垂直線 x=1
+plt.axvline(1, color = &quot;k&quot;, lw = 0.5)</code></pre><p><img src="../ch02-po3-plot.svg" alt/></p><h2 id="ローレンツ関数を描く"><a class="docs-heading-anchor" href="#ローレンツ関数を描く">▼ ローレンツ関数を描く</a><a id="ローレンツ関数を描く-1"></a><a class="docs-heading-anchor-permalink" href="#ローレンツ関数を描く" title="Permalink"></a></h2><p><a href="http://mathworld.wolfram.com/LorentzianFunction.html">Lorentzian Function</a></p><p>以下の曲線を， ローレンツ関数（Lorentzian function）という．</p><p class="math-container">\[\begin{gathered}
+y = \dfrac{\dfrac{\gamma}{2}}{(x-x_0)^2+\left(\dfrac{\gamma}{2}\right)^2}, \\
+\gamma &gt; 0
+\end{gathered}\]</p><p>パラメータを <span>$x_0 = 0, \gamma = 2$</span> のように選ぶと， 以下のように簡単な形となる．</p><p class="math-container">\[y = \dfrac{1}{x^2+1}\]</p><p>まず，この曲線を描いてみる．</p><p>分母 <span>$x^2+1$</span> を計算するには，「ベクトル」 <code>xs.^2</code> にスカラー <code>1</code> を加算する． このとき，<code>+</code> の前にピリオド <code>.</code> を付与した ドット演算子（dot operator）<code>.+</code> を用いる．</p><pre><code class="language-julia-repl hljs" style="display:block;">julia&gt; xs = -3:0.5:3</code><code class="nohighlight hljs ansi" style="display:block;">-3.0:0.5:3.0</code><br/><code class="language-julia-repl hljs" style="display:block;">julia&gt; xs.^ 2 .+ 1</code><code class="nohighlight hljs ansi" style="display:block;">13-element Vector{Float64}:
+ 10.0
+  7.25
+  5.0
+  3.25
+  2.0
+  1.25
+  1.0
+  1.25
+  2.0
+  3.25
+  5.0
+  7.25
+ 10.0</code></pre><p>「スカラー」<span>$1$</span> を「ベクトル」 <span>$(xs.^2+1)$</span> の各要素で割る には，<code>/</code> の前にピリオド <code>.</code> を付与したドット演算子 <code>./</code> を用いる．</p><pre><code class="language-julia-repl hljs" style="display:block;">julia&gt; 1 ./ (xs.^ 2 .+ 1)</code><code class="nohighlight hljs ansi" style="display:block;">13-element Vector{Float64}:
+ 0.1
+ 0.13793103448275862
+ 0.2
+ 0.3076923076923077
+ 0.5
+ 0.8
+ 1.0
+ 0.8
+ 0.5
+ 0.3076923076923077
+ 0.2
+ 0.13793103448275862
+ 0.1</code></pre><p>上のグラフを描こう．<code>xs</code> の刻みを小さくしておく．</p><pre><code class="language-julia hljs">using PyPlot
+
+xs = -3:0.1:3
+ys = 1 ./ (xs.^ 2 .+ 1)
+plt.plot(xs, ys)</code></pre><p><img src="../ch02-lo1-plot.svg" alt/></p><p>以下のように，パラメータ <span>$\gamma$</span> を追加する．</p><p class="math-container">\[y = \dfrac{\dfrac{\gamma}{2}}{x^2+\left(\dfrac{\gamma}{2}\right)^2}\]</p><p>3つのパラメータ <span>$\gamma=0.5, 1, 2$</span> について，この曲線を描く．</p><pre><code class="language-julia hljs">using PyPlot
+
+xs = -3:0.05:3
+gamma = 0.5
+ys = (gamma / 2) ./ (xs.^ 2 .+ (gamma / 2)^2)
+plt.plot(xs, ys, label = gamma)
+gamma = 1.0
+ys = (gamma / 2) ./ (xs.^ 2 .+ (gamma / 2)^2)
+plt.plot(xs, ys, label = gamma)
+gamma = 2.0
+ys = (gamma / 2) ./ (xs.^ 2 .+ (gamma / 2)^2)
+plt.plot(xs, ys, label = gamma)
+plt.legend()</code></pre><p><img src="../ch02-lo2-plot.svg" alt/></p><p><code>gamma</code> の値が変わっても，それぞれの曲線を描くための命令は変わらない． <code>for</code> 文を用いて，<code>gamma</code> の値を変えてみよう（結果のグラフは前出のため省略）．</p><pre><code class="language-julia hljs">using PyPlot
+
+xs = -3:0.05:3
+for gamma in [0.5, 1.0, 2.0]
+   local ys=(gamma / 2) ./ (xs.^ 2 .+ (gamma / 2)^2)
+   plt.plot(xs, ys,
+      label = gamma)
+end
+plt.legend()</code></pre><div class="admonition is-info"><header class="admonition-header">Note</header><div class="admonition-body"><p>本章のプログラムを順に打ち込みながら対話すると，変数 <code>ys</code> が定義済みである．上のコードの <code>for</code>ブロックの最初の文 <code>local ys</code> は，<code>for</code>ブロックの外で定義された（＝全域）変数 <code>ys</code> の値を変更するのではなく，<code>for</code>ブロック内部のみで定義される（＝局所）変数 <code>ys</code> を用いることをJuliaに指示する．Julia 1.6では，<code>local</code>を付けなくても上のプログラムは動作するが警告メッセージが表示される．</p></div></div><p>ローレンツ関数には，次の性質がある．</p><ul><li>点 <span>$x = 0$</span> で 最大値 <span>$y = \dfrac{2}{\gamma}$</span></li><li>点 <span>$x = \pm\dfrac{\gamma}{2}$</span> で，最大値の半分 <span>$y = \dfrac{1}{2}\dfrac{2}{\gamma}$</span></li></ul><p>2つ目の性質を観察するため，最大値に対する比を描いてみる．</p><pre><code class="language-julia hljs">using PyPlot
+
+xs = -3:0.05:3
+for gamma in [0.5, 1.0, 2.0]
+   local ys=(gamma / 2) ./ (xs.^ 2 .+ (gamma / 2)^2) / (2 / gamma)
+   plt.plot(xs,ys,
+      label = gamma,
+   )
+end
+plt.legend()
+plt.axhline(1 / 2, color = &quot;k&quot;, lw = 0.5)</code></pre><p><img src="../ch02-lo4-plot.svg" alt/></p><div class="admonition is-info"><header class="admonition-header">Note</header><div class="admonition-body"><p><code>plot</code> 関数の文は，複数の行にまたがっていることに注目したい．式や文が次の行に続くことを示す記法は，とくに用意されていない．構文が行末で終わらなければ，次の行まで読みにいく．</p></div></div><p>パラメータ <span>$\gamma$</span> は，半値全幅（Full Width of Half Maximum, FWHM）と呼ばれる． <span>$\gamma$</span> を非常に小さくすると，Diracのデルタ関数（Dirac delta function）の近似（の1つ）となる．</p><h2 id="ドット演算子"><a class="docs-heading-anchor" href="#ドット演算子">■ ドット演算子</a><a id="ドット演算子-1"></a><a class="docs-heading-anchor-permalink" href="#ドット演算子" title="Permalink"></a></h2><p>前節 <a href="#ローレンツ関数を描く">▼ ローレンツ関数を描く</a>では， コレクションとスカラーとの間の加減除算で，<code>.+</code> ，<code>.-</code> ，<code>./</code> のように， 半角文字のピリオド（ドッド）で始まるドット演算子（dot operator）を用いた． ドット演算子は，「コレクションの各要素に対して演算する（element-wise operation）」という意味を持つ．</p><p>加減乗除のドット演算子を適用される値の 一方がコレクション，他方がスカラーの場合には， 「スカラーをコレクションと同じ寸法のベクトルに拡張して」から， 要素同士の演算を行う仕組みになっている． この仕組みを「ブロードキャスト（broadcast）」と呼ぶ．</p><h3 id="コレクションとスカラーとの四則演算（復習）"><a class="docs-heading-anchor" href="#コレクションとスカラーとの四則演算（復習）">▼ コレクションとスカラーとの四則演算（復習）</a><a id="コレクションとスカラーとの四則演算（復習）-1"></a><a class="docs-heading-anchor-permalink" href="#コレクションとスカラーとの四則演算（復習）" title="Permalink"></a></h3><p>コレクションをスカラーで乗除するには、演算子 <code>*</code>，<code>/</code> を用いる．ドット演算子を使う必要はない．</p><p>・ベクトルをスカラーで乗除する → <a href="../ch01/#ベクトルの各要素をスカラーで乗除する">■ ベクトルの各要素をスカラーで乗除する</a></p><p>・範囲をスカラーで乗除する → <a href="../ch01/#範囲の各要素をスカラーで乗除する">■ 範囲の各要素をスカラーで乗除する</a></p><pre><code class="language-julia-repl hljs" style="display:block;">julia&gt; (2:2:4) * 2</code><code class="nohighlight hljs ansi" style="display:block;">4:4:8</code><br/><code class="language-julia-repl hljs" style="display:block;">julia&gt; (2:2:4) / 2</code><code class="nohighlight hljs ansi" style="display:block;">1.0:1.0:2.0</code></pre><p>結果も範囲となる（賢い！）．</p><div class="admonition is-info"><header class="admonition-header">Note</header><div class="admonition-body"><p>注意：括弧をつけないと，解釈が異なる．範囲の演算子 <code>:</code> は，四則演算の演算子よりも優先度が低い．<code>2:2:(4 * 2)</code> と解釈される．</p><pre><code class="language- hljs">julia&gt; 2:2:4 * 2
+2:2:8</code></pre></div></div><p>コレクションをスカラーで加減するには、演算子 <code>.+</code>，<code>.-</code> を用いる．</p><p>・ベクトルをスカラーで加減する → <a href="../ch01/#ベクトルの各要素をスカラーで加減する">■ ベクトルの各要素をスカラーで加減する</a></p><p>・範囲をスカラーで加減する → <a href="../ch01/#範囲の各要素をスカラーで加減する">■ 範囲の各要素をスカラーで加減する</a></p><pre><code class="language-julia-repl hljs" style="display:block;">julia&gt; 2:2:4 .+ 2</code><code class="nohighlight hljs ansi" style="display:block;">2:2:6</code><br/><code class="language-julia-repl hljs" style="display:block;">julia&gt; 2:2:4 .- 2</code><code class="nohighlight hljs ansi" style="display:block;">2:2:2</code></pre><div class="admonition is-info"><header class="admonition-header">Note</header><div class="admonition-body"><p>注意：ドットをつけないと，解釈が異なる．範囲の演算子 <code>:</code> は，四則演算の演算子よりも優先度が低い．<code>2:2:(4 + 2)</code> と解釈される．</p><pre><code class="language- hljs">julia&gt; 2:2:4 + 2
+2:2:6</code></pre><p>ドットの付け忘れが怖いなら，範囲を括弧で囲むとよい．</p><pre><code class="language- hljs">julia&gt; (2:2:4) .+ 2
+4:2:6</code></pre></div></div><h3 id="コレクションの対応する要素同士の加減乗除"><a class="docs-heading-anchor" href="#コレクションの対応する要素同士の加減乗除">▼ コレクションの対応する要素同士の加減乗除</a><a id="コレクションの対応する要素同士の加減乗除-1"></a><a class="docs-heading-anchor-permalink" href="#コレクションの対応する要素同士の加減乗除" title="Permalink"></a></h3><p>同じ寸法を持つコレクション同士に対してドット演算子を用いると， 対応する要素同士で演算を行う． 要素の数が異なると，例外（exception, エラー）が発生する．</p><p>・ベクトル（の対応する要素）同士の加減算</p><pre><code class="language-julia-repl hljs" style="display:block;">julia&gt; xs = [1, 2, 2, 1]</code><code class="nohighlight hljs ansi" style="display:block;">4-element Vector{Int64}:
+ 1
+ 2
+ 2
+ 1</code><br/><code class="language-julia-repl hljs" style="display:block;">julia&gt; ys = [1, 1, 3, 1]</code><code class="nohighlight hljs ansi" style="display:block;">4-element Vector{Int64}:
+ 1
+ 1
+ 3
+ 1</code><br/><code class="language-julia-repl hljs" style="display:block;">julia&gt; xs .+ ys</code><code class="nohighlight hljs ansi" style="display:block;">4-element Vector{Int64}:
+ 2
+ 3
+ 5
+ 2</code><br/><code class="language-julia-repl hljs" style="display:block;">julia&gt; xs .- ys</code><code class="nohighlight hljs ansi" style="display:block;">4-element Vector{Int64}:
+  0
+  1
+ -1
+  0</code></pre><p>・範囲（の対応する要素）同士の加減算</p><pre><code class="language-julia-repl hljs" style="display:block;">julia&gt; xs = 100:100:300</code><code class="nohighlight hljs ansi" style="display:block;">100:100:300</code><br/><code class="language-julia-repl hljs" style="display:block;">julia&gt; ys = 1:2:5</code><code class="nohighlight hljs ansi" style="display:block;">1:2:5</code><br/><code class="language-julia-repl hljs" style="display:block;">julia&gt; xs .+ ys</code><code class="nohighlight hljs ansi" style="display:block;">101:102:305</code><br/><code class="language-julia-repl hljs" style="display:block;">julia&gt; xs .- ys</code><code class="nohighlight hljs ansi" style="display:block;">99:98:295</code></pre><p>結果も範囲となる（賢い！）．</p><p>・範囲とベクトル（の対応する要素同士）の加減算</p><pre><code class="language-julia-repl hljs" style="display:block;">julia&gt; xs = 100:100:300</code><code class="nohighlight hljs ansi" style="display:block;">100:100:300</code><br/><code class="language-julia-repl hljs" style="display:block;">julia&gt; ys = [1,3,5]</code><code class="nohighlight hljs ansi" style="display:block;">3-element Vector{Int64}:
+ 1
+ 3
+ 5</code><br/><code class="language-julia-repl hljs" style="display:block;">julia&gt; xs .+ ys</code><code class="nohighlight hljs ansi" style="display:block;">3-element Vector{Int64}:
+ 101
+ 203
+ 305</code><br/><code class="language-julia-repl hljs" style="display:block;">julia&gt; xs .- ys</code><code class="nohighlight hljs ansi" style="display:block;">3-element Vector{Int64}:
+  99
+ 197
+ 295</code></pre><p>1つ上の「範囲同士の加算」の例と比較せよ．範囲 <code>1:2:5</code> とベクトル <code>[1,3,5]</code> は、実質同じ値であるが，範囲とベクトルの加減算はベクトルになる．</p><p>・ベクトル（の対応する要素）同士の乗除算</p><pre><code class="language-julia-repl hljs" style="display:block;">julia&gt; xs = [1, 2, 4, 3]</code><code class="nohighlight hljs ansi" style="display:block;">4-element Vector{Int64}:
+ 1
+ 2
+ 4
+ 3</code><br/><code class="language-julia-repl hljs" style="display:block;">julia&gt; ys = [2, 1, 2, 1]</code><code class="nohighlight hljs ansi" style="display:block;">4-element Vector{Int64}:
+ 2
+ 1
+ 2
+ 1</code><br/><code class="language-julia-repl hljs" style="display:block;">julia&gt; xs .* ys</code><code class="nohighlight hljs ansi" style="display:block;">4-element Vector{Int64}:
+ 2
+ 2
+ 8
+ 3</code><br/><code class="language-julia-repl hljs" style="display:block;">julia&gt; xs ./ ys</code><code class="nohighlight hljs ansi" style="display:block;">4-element Vector{Float64}:
+ 0.5
+ 2.0
+ 2.0
+ 3.0</code></pre><h2 id="更新演算子"><a class="docs-heading-anchor" href="#更新演算子">■ 更新演算子</a><a id="更新演算子-1"></a><a class="docs-heading-anchor-permalink" href="#更新演算子" title="Permalink"></a></h2><p><a href="https://docs.julialang.org/en/v1.8/manual/mathematical-operations/#Updating-operators">Updating operators</a></p><p>変数に四則演算などを行って，元の変数に再代入する場合には， 更新演算子（updating operator）を用いるとよい． たとえば，加算の更新演算子は<code>+</code>記号の直後に <code>=</code> の文字を付与する．</p><pre><code class="language-julia-repl hljs" style="display:block;">julia&gt; x = 1</code><code class="nohighlight hljs ansi" style="display:block;">1</code><br/><code class="language-julia-repl hljs" style="display:block;">julia&gt; # 再代入
+       x = x + 1</code><code class="nohighlight hljs ansi" style="display:block;">2</code><br/><code class="language-julia-repl hljs" style="display:block;">julia&gt; # 更新演算子
+       x += 1</code><code class="nohighlight hljs ansi" style="display:block;">3</code></pre><p>スカラー変数に対する演算子 <code>+</code>，<code>-</code>，<code>*</code>，<code>/</code>，<code>^</code> に対して， 更新演算子 <code>+=</code>，<code>-=</code>，<code>*=</code>，<code>/=</code>，<code>^=</code> が用意されている．</p><p>以下の例は，変数 <code>gamma</code> を 2 で繰り返し割り算する．</p><pre><code class="language-julia-repl hljs" style="display:block;">julia&gt; gamma = 2</code><code class="nohighlight hljs ansi" style="display:block;">2</code><br/><code class="language-julia-repl hljs" style="display:block;">julia&gt; for i = 1:5
+          global gamma
+          gamma /= 2
+          @show gamma
+       end</code><code class="nohighlight hljs ansi" style="display:block;">gamma = 1.0
+gamma = 0.5
+gamma = 0.25
+gamma = 0.125
+gamma = 0.0625</code></pre><p>更新演算子 <code>/=</code> を利用して，ローレンツ関数のパラメータ <code>gamma</code> を変えてみる．</p><p><code>for</code> 文の次の <code>global gamma</code> に注目してほしい． 対話型で実行する場合，<code>for</code> 文の外側で定義された変数の値を変更することは， 安全のために通常禁止されている．これを可能とするのが <code>global</code> 文である．</p><pre><code class="language-julia hljs">using PyPlot
+xs = -3:0.05:3
+gamma = 2
+for i = 1:5
+   global gamma
+   local ys=(gamma / 2) ./ (xs.^ 2 .+ (gamma / 2)^2) / (2 / gamma)
+   plt.plot(
+      xs,ys,
+      label = gamma,
+   )
+   gamma /= 2
+end
+plt.legend()
+axhline(1 / 2, color = &quot;k&quot;, lw = 0.5)</code></pre><p><img src="../ch02-lo5-plot.svg" alt/></p><h3 id="練習-2"><a class="docs-heading-anchor" href="#練習-2">▲ 練習</a><a class="docs-heading-anchor-permalink" href="#練習-2" title="Permalink"></a></h3><p>ローレンツ関数において，パラメータ <span>$x_0$</span> を変えたグラフを作成せよ． <code>for</code> 文を使う方法，更新演算子を使う方法の，2つで描いてみよ．</p><h3 id="ベクトルに対する更新演算：乗除"><a class="docs-heading-anchor" href="#ベクトルに対する更新演算：乗除">■ ベクトルに対する更新演算：乗除</a><a id="ベクトルに対する更新演算：乗除-1"></a><a class="docs-heading-anchor-permalink" href="#ベクトルに対する更新演算：乗除" title="Permalink"></a></h3><p>ベクトルを保持する変数に対しても、更新演算が用意されている．</p><p>・ベクトルを保持する変数を、スカラー倍して更新する</p><p>ベクトルをスカラー倍して更新するには，更新演算子 <code>*=</code> を用いる． 式 <code>v *= c</code> は，<code>v = v * c</code> と同じ動作をする．</p><pre><code class="language-julia-repl hljs" style="display:block;">julia&gt; xs = [1, 2, 2, 1]</code><code class="nohighlight hljs ansi" style="display:block;">4-element Vector{Int64}:
+ 1
+ 2
+ 2
+ 1</code><br/><code class="language-julia-repl hljs" style="display:block;">julia&gt; xs *= 2</code><code class="nohighlight hljs ansi" style="display:block;">4-element Vector{Int64}:
+ 2
+ 4
+ 4
+ 2</code><br/><code class="language-julia-repl hljs" style="display:block;">julia&gt; xs</code><code class="nohighlight hljs ansi" style="display:block;">4-element Vector{Int64}:
+ 2
+ 4
+ 4
+ 2</code></pre><p>前節の三角形を描く例題で，更新演算子 <code>*=</code> を用いて，図形を繰り返し拡大してみよう．</p><pre><code class="language-julia hljs">using PyPlot
+plt.axes().set_aspect(&quot;equal&quot;)
+
+xs = [1.0, 2.0, 2.0, 1.0]
+ys = [1.0, 1.0, 3.0, 1.0]
+for i = 1:5
+   global xs, ys
+   plt.plot(xs, ys)
+   xs *= 1.2
+   ys *= 1.2
+end
+plt.xlim(0, 7)
+plt.ylim(0, 7)</code></pre><p><img src="../ch02-tri-expand-plot.svg" alt/></p><p>ベクトルをスカラーで除して更新するには， 更新演算子 <code>/=</code> を用いる． 式 <code>v /= c</code> は，<code>v = v / c</code> と同じ動作をする．</p><h3 id="ベクトルに対する更新演算：加減"><a class="docs-heading-anchor" href="#ベクトルに対する更新演算：加減">■ ベクトルに対する更新演算：加減</a><a id="ベクトルに対する更新演算：加減-1"></a><a class="docs-heading-anchor-permalink" href="#ベクトルに対する更新演算：加減" title="Permalink"></a></h3><p>ベクトルにスカラーを加減して更新するには，更新演算子 <code>.+=</code>または <code>.-=</code> を用いる． 式 <code>v .+= c</code> は，<code>v = v .+ c</code> と同じ動作をする．</p><pre><code class="language-julia-repl hljs" style="display:block;">julia&gt; xs = [1, 2, 2, 1]</code><code class="nohighlight hljs ansi" style="display:block;">4-element Vector{Int64}:
+ 1
+ 2
+ 2
+ 1</code><br/><code class="language-julia-repl hljs" style="display:block;">julia&gt; xs .+= 1</code><code class="nohighlight hljs ansi" style="display:block;">4-element Vector{Int64}:
+ 2
+ 3
+ 3
+ 2</code><br/><code class="language-julia-repl hljs" style="display:block;">julia&gt; xs</code><code class="nohighlight hljs ansi" style="display:block;">4-element Vector{Int64}:
+ 2
+ 3
+ 3
+ 2</code></pre><p>前節の三角形を描く例題で，更新演算子 <code>.+=</code> を用いて， 図形を繰り返し並行移動してみよう．</p><p><code>for</code> 文の中で，変数 <code>xs</code> と <code>ys</code> を更新するので，<code>global xs, ys</code> の文が必要である．</p><pre><code class="language-julia hljs">using PyPlot
+plt.axes().set_aspect(&quot;equal&quot;)
+
+xs = [1.0, 2.0, 2.0, 1.0]
+ys = [1.0, 1.0, 3.0, 1.0]
+for i = 1:5
+   global xs, ys
+   plt.plot(xs, ys)
+   xs .+= 0.5
+   ys .+= 0.5
+end
+plt.xlim(0, 6)
+plt.ylim(0, 6)</code></pre><p><img src="../ch02-tri-shift-plot.svg" alt/></p><h3 id="ベクトルとコレクションとの更新演算"><a class="docs-heading-anchor" href="#ベクトルとコレクションとの更新演算">■ ベクトルとコレクションとの更新演算</a><a id="ベクトルとコレクションとの更新演算-1"></a><a class="docs-heading-anchor-permalink" href="#ベクトルとコレクションとの更新演算" title="Permalink"></a></h3><p>ベクトルとコレクションに対する演算にも更新演算子が用意されている． ベクトル <code>v</code> とコレクション <code>w</code> に対して， 式 <code>v .+= w</code> は，<code>v = v .+ w</code> と同じ動作をする．</p><pre><code class="language-julia-repl hljs" style="display:block;">julia&gt; xs = [1, 2, 2, 1]</code><code class="nohighlight hljs ansi" style="display:block;">4-element Vector{Int64}:
+ 1
+ 2
+ 2
+ 1</code><br/><code class="language-julia-repl hljs" style="display:block;">julia&gt; ys = [1, 1, 3, 1]</code><code class="nohighlight hljs ansi" style="display:block;">4-element Vector{Int64}:
+ 1
+ 1
+ 3
+ 1</code><br/><code class="language-julia-repl hljs" style="display:block;">julia&gt; xs .+= ys</code><code class="nohighlight hljs ansi" style="display:block;">4-element Vector{Int64}:
+ 2
+ 3
+ 5
+ 2</code><br/><code class="language-julia-repl hljs" style="display:block;">julia&gt; xs</code><code class="nohighlight hljs ansi" style="display:block;">4-element Vector{Int64}:
+ 2
+ 3
+ 5
+ 2</code><br/><code class="language-julia-repl hljs" style="display:block;">julia&gt; xs .-= ys</code><code class="nohighlight hljs ansi" style="display:block;">4-element Vector{Int64}:
+ 1
+ 2
+ 2
+ 1</code><br/><code class="language-julia-repl hljs" style="display:block;">julia&gt; xs</code><code class="nohighlight hljs ansi" style="display:block;">4-element Vector{Int64}:
+ 1
+ 2
+ 2
+ 1</code></pre><p>同様に、式 <code>v .*= w</code> は，<code>v = v .* w</code> と同じ動作をする．</p><pre><code class="language-julia-repl hljs" style="display:block;">julia&gt; xs = [1, 2, 2, 1]</code><code class="nohighlight hljs ansi" style="display:block;">4-element Vector{Int64}:
+ 1
+ 2
+ 2
+ 1</code><br/><code class="language-julia-repl hljs" style="display:block;">julia&gt; ys = [1, 1, 3, 1]</code><code class="nohighlight hljs ansi" style="display:block;">4-element Vector{Int64}:
+ 1
+ 1
+ 3
+ 1</code><br/><code class="language-julia-repl hljs" style="display:block;">julia&gt; xs .*= ys</code><code class="nohighlight hljs ansi" style="display:block;">4-element Vector{Int64}:
+ 1
+ 2
+ 6
+ 1</code><br/><code class="language-julia-repl hljs" style="display:block;">julia&gt; xs</code><code class="nohighlight hljs ansi" style="display:block;">4-element Vector{Int64}:
+ 1
+ 2
+ 6
+ 1</code><br/><code class="language-julia-repl hljs" style="display:block;">julia&gt; xs ./= ys</code><code class="nohighlight hljs ansi" style="display:block;">4-element Vector{Int64}:
+ 1
+ 2
+ 2
+ 1</code><br/><code class="language-julia-repl hljs" style="display:block;">julia&gt; xs</code><code class="nohighlight hljs ansi" style="display:block;">4-element Vector{Int64}:
+ 1
+ 2
+ 2
+ 1</code></pre><h3 id="練習-3"><a class="docs-heading-anchor" href="#練習-3">▲ 練習</a><a class="docs-heading-anchor-permalink" href="#練習-3" title="Permalink"></a></h3><p>ベクトルの要素同士の乗算 <code>.*</code> と <code>for</code>文を用いて，いくつかの冪乗関数のグラフを描いてみよ．</p><p>さらに，ベクトルの要素同士の乗算の代わりに，ベクトル要素の乗算と更新演算子 <code>*=</code> も使ってみよ．</p><h2 id="今回のまとめ"><a class="docs-heading-anchor" href="#今回のまとめ">★ 今回のまとめ</a><a id="今回のまとめ-1"></a><a class="docs-heading-anchor-permalink" href="#今回のまとめ" title="Permalink"></a></h2><ul><li>文字列</li><li><code>for</code> 文</li><li>グラフに凡例を加える</li><li>冪乗関数</li><li>ローレンツ関数</li><li>更新演算子</li><li>ドット演算子</li><li>コレクション＝ベクトル・範囲</li><li>コレクションの対応する要素同士の加減乗除</li></ul></article><nav class="docs-footer"><p class="footer-message">Powered by <a href="https://github.com/JuliaDocs/Documenter.jl">Documenter.jl</a> and the <a href="https://julialang.org/">Julia Programming Language</a>.</p></nav></div><div class="modal" id="documenter-settings"><div class="modal-background"></div><div class="modal-card"><header class="modal-card-head"><p class="modal-card-title">Settings</p><button class="delete"></button></header><section class="modal-card-body"><p><label class="label">Theme</label><div class="select"><select id="documenter-themepicker"><option value="documenter-light">documenter-light</option><option value="documenter-dark">documenter-dark</option><option value="auto">Automatic (OS)</option></select></div></p><hr/><p>This document was generated with <a href="https://github.com/JuliaDocs/Documenter.jl">Documenter.jl</a> version 1.0.1 on <span class="colophon-date" title="Wednesday 20 September 2023 08:34">Wednesday 20 September 2023</span>. Using Julia version 1.9.3.</p></section><footer class="modal-card-foot"></footer></div></div></div></body></html>
